@@ -1,0 +1,90 @@
+class DoublyLinkedList{
+    static class Node{
+        int data;
+        Node prev;
+        Node next;
+        Node(int data){
+            this.data=data;
+            this.prev=null;
+            this.next=null;
+        }
+    }
+    private Node head;
+    public void addFirst(int data){
+        Node newNode=new Node(data);
+        if (head==null){
+            head=newNode;
+            return;
+        }
+        newNode.next=head;
+        head.prev=newNode;
+        head=newNode;
+    }
+    public void addLast(int data){
+        Node newNode=new Node(data);
+        if (head==null){
+            head=newNode;
+            return;
+        }
+        Node temp=head;
+        while (temp.next!=null){
+            temp=temp.next;
+        }
+        temp.next=newNode;
+        newNode.prev=temp;
+    }
+    public void delete(int data){
+        if(head==null){
+            System.out.println("List is empty.");
+            return;
+        }
+        Node temp=head;
+        if(temp.data==data){
+            if(temp.next!=null){
+                temp.next.prev=null;
+            }
+            head=temp.next;
+            return;
+        }
+        while(temp!=null && temp.data!=data) {
+            temp=temp.next;
+        }
+        if(temp==null){
+            System.out.println("Node not found.");
+            return;
+        }
+        if(temp.next!=null){
+            temp.next.prev=temp.prev;
+        }
+        if(temp.prev!=null){
+            temp.prev.next=temp.next;
+        }
+    }
+    public void display(){
+        if(head==null){
+            System.out.println("List is empty.");
+            return;
+        }
+        Node temp=head;
+        while(temp!=null){
+            System.out.print(temp.data + " ");
+            temp=temp.next;
+        }
+        System.out.println();
+    }
+    public static void main(String[] args){
+        DoublyLinkedList dll=new DoublyLinkedList();
+        dll.addFirst(1);
+        dll.addLast(2);
+        dll.addFirst(5);
+        dll.addLast(3);
+        System.out.println("Doubly Linked List:");
+        dll.display();
+        System.out.println("Deleting node with value 2:");
+        dll.delete(2);
+        dll.display();
+        System.out.println("Deleting node with value 5:");
+        dll.delete(5);
+        dll.display();
+    }
+}
