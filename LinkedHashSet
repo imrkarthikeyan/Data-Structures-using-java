@@ -1,0 +1,35 @@
+import java.util.LinkedHashSet;
+
+public class LinkedHashSetExample{
+  public static void main(String[] args){
+    LinkedHashSet<String> students=new LinkedHashSet<>();
+    
+    //to add elements
+    students.add("Aathav");
+    students.add("Krishna");
+    students.add("Karthick");
+    students.add("Sanjay");
+    students.add("Kishor");
+    System.out.println(students);
+    
+    //to check for an element
+    System.out.println(students.contains("Karthick"));
+    
+    //to remove an element
+    System.out.println(students.remove("Karthick"));
+    
+    //to remove all elements
+    students.clear();
+    System.out.println(students);
+    
+    //to find length
+    System.out.println(students.size());
+    
+    //LinkedHashSet with a for-each loop
+    students.add("Ajay");
+    students.add("Naveen");
+    for(String st:students){
+        System.out.println(st);
+    }
+  }
+}
