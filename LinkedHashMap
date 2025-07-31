@@ -1,0 +1,34 @@
+import java.util.LinkedHashMap;
+
+public class LinkedHashmspExample{
+  public static void main(String[] args){
+    LinkedHashMap<String,String> roleWithPlayers=new LinkedHashMap<>();
+    
+    //to add items
+    roleWithPlayers.put("batsman","Rohit");
+    roleWithPlayers.put("bowler","Bumrah");
+    roleWithPlayers.put("Allrounder","Jadeja");
+    roleWithPlayers.put("wk","Dhoni");
+
+    System.out.println(roleWithPlayers);
+    
+    //to get value
+    System.out.println(roleWithPlayers.get("wk"));
+    
+    //to remove an item by key
+    roleWithPlayers.remove("wk");
+    System.out.println(roleWithPlayers);
+    
+    //to find length
+    System.out.println(roleWithPlayers.size());
+    
+    //to print keys and values
+    for(String key:roleWithPlayers.keySet()){
+        System.out.println(key +": "+roleWithPlayers.get(key));
+    }
+    
+    //to remove all items
+    roleWithPlayers.clear();
+    System.out.println(roleWithPlayers);
+  }
+}
