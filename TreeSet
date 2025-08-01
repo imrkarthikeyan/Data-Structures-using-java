@@ -1,0 +1,34 @@
+import java.util.TreeSet;
+
+public class TreeSetExample{
+  public static void main(String[] args) {
+    TreeSet<String> players=new TreeSet<>();
+    
+    //to add items
+    players.add("Jadeja");
+    players.add("Kholi");
+    players.add("Rohit");
+    players.add("Kholi");
+    players.add("Hardik");
+    System.out.println(players);
+    
+    //to check if an element exists
+    System.out.println(players.contains("Hardik"));
+    
+    //to remove an element
+    players.remove("Jadeja");
+    System.out.println(players);
+    
+    //to print length of tree set
+    System.out.println(players.size());
+    
+    //accessing element using for each loop
+    for(String player:players){
+        System.out.println(player);
+    }
+    
+    //to remove all the items
+    players.clear();
+    System.out.println(players);
+  }
+}
