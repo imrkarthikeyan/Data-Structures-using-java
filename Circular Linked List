@@ -1,0 +1,81 @@
+class Node{
+    int data;
+    Node next;
+    Node(int data){
+        this.data=data;
+        this.next=null;
+    }
+}
+class CircularLinkedList{
+    Node head=null;
+    Node tail=null;
+    public void add(int data){
+        Node newNode=new Node(data);
+        if(head==null){
+            head=newNode;
+            tail=newNode;
+            tail.next=head;
+        }
+        else{
+            tail.next=newNode;
+            tail=newNode;
+            tail.next=head;
+        }
+    }
+    public void display(){
+        if(head==null){
+            System.out.println("List is empty");
+            return;
+        }
+        Node current=head;
+        do{
+            System.out.print(current.data + " ");
+            current=current.next;
+        }while(current != head);
+        System.out.println();
+    }
+    public void delete(int key){
+        if(head==null){
+            System.out.println("List is empty");
+            return;
+        }
+        Node current=head,previous=tail;
+        if(head.data==key){
+            if(head==tail){
+                head=null;
+                tail=null;
+            }
+            else{
+                head=head.next;
+                tail.next=head;
+            }
+            return;
+        }
+        do{
+            if(current.data==key){
+                previous.next=current.next;
+                if(current==tail){
+                    tail=previous;
+                }
+                return;
+            }
+            previous=current;
+            current=current.next;
+        }while(current != head);
+        System.out.println("Node not found");
+    }
+}
+public class Main{
+    public static void main(String[] args){
+        CircularLinkedList cll=new CircularLinkedList();
+        cll.add(10);
+        cll.add(20);
+        cll.add(30);
+        cll.add(40);
+        System.out.println("Circular Linked List:");
+        cll.display();
+        cll.delete(20);
+        System.out.println("After deleting 20:");
+        cll.display();
+    }
+}
